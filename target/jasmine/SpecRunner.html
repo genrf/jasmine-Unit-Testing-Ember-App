@@ -3369,6 +3369,9 @@
   };
   </script>
   <script type="text/javascript" src="src/libs/requirejs/2.1.2/require.js"></script>
+  <script type="text/javascript" src="src/libs/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript" src="src/libs/handlebars/1.0.rc.3/handlebars.js"></script>
+  <script type="text/javascript" src="src/libs/ember/1.0.0-rc.2/ember.js"></script>
 
 </head>
 <body>
@@ -3377,16 +3380,9 @@
       document.body.appendChild(document.createTextNode("Warning: opening this HTML file directly from the file system is deprecated. You should instead try running `mvn jasmine:bdd` from the command line, and then visit `http://localhost:8234` in your browser. "))
     }
 
-    var specs = [];
+    var specs = ['spec/locHelpersSpec.js', 'spec/mainSpec.js'];
 
     var configuration = {
-      paths : {
-      	/*libs*/
-      	'jquery': 'libs/jquery/1.9.1/jquery',
-      	'cookies' : 'libs/jquery-plugins/cookies',
-      	'handlebars': 'libs/handlebars/1.0.rc.3/handlebars',
-      	'ember': 'libs/ember/1.0.0-rc.2/ember'
-      }
     };
 
     if (!configuration.baseUrl) {

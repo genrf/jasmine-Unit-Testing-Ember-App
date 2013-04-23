@@ -5,13 +5,14 @@ define(["ember"], function(Ember){
 		hasError: false,
 		errorMismatch: false,
 		errorEmpty: false,
-		attemptLogin: function(){
+		attemptLogin: function(view){
 			//Reinicializamos las variables de error
 			this.set('hasError', false);
 			this.set('errorMismatch', false);
 			this.set('errorEmpty',false);
 			var userName = this.get('userName');
-			repeatedUserName = this.get('repeatedUserName');
+				repeatedUserName = this.get('repeatedUserName');
+			console.log('attemptLogin');
 			//Añadir comprobacion de que no esten vacios
 			if(userName != "" || repeatedUserName != ""){
 				if(userName == repeatedUserName){
@@ -29,6 +30,5 @@ define(["ember"], function(Ember){
 			
 		}
 	 });
-	
 	return loginController;
 }); 

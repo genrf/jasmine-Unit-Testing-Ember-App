@@ -1,0 +1,8 @@
+<div class="welcomeBox">
+		<p>{{t menu.loged.welcomeMsg}} {{App.stateManager.username}}</p>
+
+	</div>
+	<div class="listBox">
+		{{#linkTo "menu.selectColor"}}{{t menu.button.colorListButton tagName="button"}}{{/linkTo}}
+		{{#linkTo "menu.watchColor"}} {{t menu.button.selectedColorButton tagName="button"}}{{/linkTo}}
+</div>

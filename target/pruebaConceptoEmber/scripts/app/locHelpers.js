@@ -1,25 +1,18 @@
-define(function(){
-
-	var locHelpers = {};
-
 /*
 	Funcion que carga el idioma que considere la aplicacion correcto ( basandose en factores como el lenguaje del navegador y los idiomas disponibles ), y escribe una cookie en el navegador
 	con la informacion sobre el lenguaje seleccionado.
 */
-locHelpers.loadLoc = function(options){
-	var loc;
+function loadLoc(options){
 	var options = options;
 	var locSelected = options.locSelected;
 	var language;
-	
 	if(locSelected != null){
 		language = locSelected;
 	}else{
-		language = locHelpers.guessLanguage();
+		language = guessLanguage();
 	}
 
 	var lang;
-
 	switch(language){
 		case 'es': 
 			options.locSelected = "es";	
@@ -45,13 +38,12 @@ locHelpers.loadLoc = function(options){
 			loc = require('locEn');
 			break;
 	}
-
 	return loc
 }
 /*
 	Funcion interna de loadLoc que elige el lenguaje que considera correcto
 */
-locHelpers.setLanguage = function(userLang){
+function setLanguage(userLang){
 	var selectedLang;
 	var supportedLangs = ['en-US', 'en-UK', 'en', 'es', 'es-ES'];
 
@@ -64,16 +56,17 @@ locHelpers.setLanguage = function(userLang){
 	return selectedLang
 }
 
-locHelpers.guessLanguage = function(){
-	this.setLanguage(navigator.language);
+function guessLanguage(){
+	setLanguage(navigator.language);
 }
 
 /*
 	Funcion que carga las opciones almacenadas en la cookie, devuelve un objeto con notacion JSON con las opciones
 */
-locHelpers.loadOptions = function(){
+function loadOptions(){
 	var options = $.cookie('options');
 	if(options){
+		console.debug("Se ha cargado la cookie de opciones");
 	}else{
 		// En caso de que no exista la cookie, creamos el objeto options con las opciones por defecto
 		options = {
@@ -88,7 +81,3 @@ locHelpers.loadOptions = function(){
 
 	return options
 }
-
-return locHelpers;
-
-});
