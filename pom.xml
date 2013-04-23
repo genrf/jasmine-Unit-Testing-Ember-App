@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.autentia.pruebaConceptoEmber</groupId>
+  <artifactId>pruebaConceptoEmber</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>pruebaConceptoEmber Maven Webapp</name>
+  <url>http://maven.apache.org</url> 
+  <build>
+    <finalName>pruebaConceptoEmber</finalName>
+    <plugins>      
+      <plugin>
+        <groupId>com.github.searls</groupId>
+        <artifactId>jasmine-maven-plugin</artifactId>
+        <version>1.3.1.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- Le indicamos al plugin de Jasmine que queremos realizar los test con Require.js -->
+          <specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
+          <!-- Esta directiva indica donde se encuentran los archivos que conforman nuestra aplicacion -->
+          <jsSrcDir>${project.basedir}/src/main/webapp/scripts</jsSrcDir>
+          <!-- La ruta por defecto donde buscará los test es src/test/javascript, si queremos cambiarla podemos usar la siguiente directiva -->
+          <jsTestSrcDir>${project.basedir}/src/test/specs</jsTestSrcDir>
+          <!-- Esta directiva indica donde está el archivo de configuracion que buscará require.js para indicarle donde estan los modulos AMD y las librerias de las que depende nuestro proyecto
+          en el archivo config deberemos poner las rutas a partir de nuestro directorio javascript 
+          en este caso hemos creado un archivo config para el entorno de testing, de manera que podemos cargar alguna libreria especifica para hacer testing -->
+          <!--<customRunnerConfiguration>${project.basedir}/src/main/webapp/scripts/config_test.js</customRunnerConfiguration>-->
+          <!-- Está directiva indica al plugin de Jasmine donde se encuentra la libreria require -->
+          <preloadSources>
+            <source>${project.basedir}/src/main/webapp/scripts/libs/requirejs/2.1.2/require.js</source>
+            <source>${project.basedir}/src/main/webapp/scripts/libs/jquery/1.9.1/jquery.js</source>
+            <source>${project.basedir}/src/main/webapp/scripts/libs/handlebars/1.0.rc.3/handlebars.js</source>
+            <source>${project.basedir}/src/main/webapp/scripts/libs/ember/1.0.0-rc.2/ember.js</source>
+          </preloadSources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+    </dependency>
+  </dependencies>
+</project>
