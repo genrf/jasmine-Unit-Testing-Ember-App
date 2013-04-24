@@ -1,6 +1,4 @@
-define([ 'config', 'app/controllers/LoginController',], function(config, loginController) {
-	
-	require.config(config);
+define(['controllers/LoginController',], function(loginController) {
 
 	describe("Conjunto de test que prueban la funcionalidad del  loginController ",function(){
 		it("LoginController está definido ",function(){
