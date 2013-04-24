@@ -1,9 +1,10 @@
-define(["ember"], function(Ember){
+define(["ember", 'cookies'], function(Ember, cookie){
 	StateManager= Ember.StateManager.extend({
 		isLogged: false,
 		username: null,
 		colorSelected: 'red',
 		locSelected: 'en',
+		
 		init : function(){
 			this._super();
 			this.loadState();	
@@ -11,14 +12,12 @@ define(["ember"], function(Ember){
 		//Creamos una vista para el estado, para not logged será index
 		notLoggedIn: Ember.State.create({
 			enter: function(){
-				console.debug("Estado : not Logged In")
 			}
 		}),
 
 		loggedIn: Ember.State.create({
 			enter : function(manager){
 				manager.set("isLogged", true);
-				console.debug("Estado : logged In ")
 			}
 		}),
 
@@ -31,7 +30,6 @@ define(["ember"], function(Ember){
 		},
 
 		saveState : function(){
-			console.log("guardando");
 			var options = {};
 			options.isLogged = this.isLogged;
 			options.username = this.username;

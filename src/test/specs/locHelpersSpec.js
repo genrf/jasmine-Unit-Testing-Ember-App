@@ -1,7 +1,5 @@
-define(['app/locHelpers', 'config'], function(locHelpers,config) {
-
-	require.config(config)
-
+define(['config', 'app/locHelpers'], function(config, locHelpers) {
+	require.config(config);
 
 	describe("Conjunto de test que prueban las funciones de Localizacion", function(){
 

@@ -1,4 +1,4 @@
-define(function(){
+define(['cookies', 'locEs' ,'locEn'],function(){
 
 	var locHelpers = {};
 
@@ -14,11 +14,10 @@ locHelpers.loadLoc = function(options){
 	
 	if(locSelected != null){
 		language = locSelected;
+
 	}else{
 		language = locHelpers.guessLanguage();
 	}
-
-	var lang;
 
 	switch(language){
 		case 'es': 
@@ -46,12 +45,15 @@ locHelpers.loadLoc = function(options){
 			break;
 	}
 
+	
+
 	return loc
 }
 /*
 	Funcion interna de loadLoc que elige el lenguaje que considera correcto
 */
 locHelpers.setLanguage = function(userLang){
+	
 	var selectedLang;
 	var supportedLangs = ['en-US', 'en-UK', 'en', 'es', 'es-ES'];
 
@@ -65,7 +67,8 @@ locHelpers.setLanguage = function(userLang){
 }
 
 locHelpers.guessLanguage = function(){
-	this.setLanguage(navigator.language);
+	var lang = this.setLanguage(navigator.language);
+	return lang;
 }
 
 /*

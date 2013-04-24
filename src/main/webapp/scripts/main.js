@@ -1,6 +1,8 @@
 (function(root){
 	require(["config"], function(config){
+		
 		requirejs.config(config);
+
 		require(['jquery', 'cookies', "App", "ember", "i18n", "controllers/LoginController", "app/StateManager", "app/locHelpers",
 			// Aqui se cargaran todos los ficheros de idioma, aparte de agregarlos al config.js
 			"locEs", "locEn"],

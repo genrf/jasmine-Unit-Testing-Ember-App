@@ -31,7 +31,7 @@
           <!-- Esta directiva indica donde está el archivo de configuracion que buscará require.js para indicarle donde estan los modulos AMD y las librerias de las que depende nuestro proyecto
           en el archivo config deberemos poner las rutas a partir de nuestro directorio javascript 
           en este caso hemos creado un archivo config para el entorno de testing, de manera que podemos cargar alguna libreria especifica para hacer testing -->
-          <customRunnerConfiguration>${project.basedir}/src/main/webapp/scripts/config_test.js</customRunnerConfiguration>
+          <!--<customRunnerConfiguration>${project.basedir}/src/main/webapp/scripts/config_test.js</customRunnerConfiguration>-->
           <!-- Está directiva indica al plugin de Jasmine donde se encuentra la libreria require -->
           <preloadSources>
             <source>${project.basedir}/src/main/webapp/scripts/libs/requirejs/2.1.2/require.js</source>

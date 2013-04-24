@@ -1,4 +1,6 @@
-define(function() {
+define(['config'], function(config) {
+	require.config(config);
+
 	describe("Comprobacion de que las librerias se hayan cargado correctamente", function() {
 		it("Ember se ha cargado", function() {
 			expect(Ember).not.toBeUndefined();
