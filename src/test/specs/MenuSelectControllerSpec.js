@@ -1,42 +1,43 @@
-define(['controllers/MenuSelectColorController', 'controllers/ColorController', 'controllers/ColorsController'], function(menuSelectColorController, ColorController, ColorsController) {
+
+define(['controllers/MenuSelectColorController'], function(menuSelectColorController) {
 
 	describe("Conjunto de test que prueban el manejo de estados del stateManager", function(){
 
-		var contfalsoController = {};
+		var stateManager = jasmine.createSpyObj('stateManager', ['set','saveState']);
 
-		var App = Ember.Application.create({
-			ColorsController : contfalsoController,
-			ColorController : ColorController,
-			menuSelectColorController : menuSelectColorController,
-			stateManager : contfalsoController
+		window.App = Ember.Application.create({
+			ColorsController : jasmine.createSpy(),
+			ColorController : jasmine.createSpy(),
+			menuSelectColorController : menuSelectColorController
 		})
 
+		App.stateManager = stateManager;
+
+		/*
+			By default, calling `Ember.Application.create()` will automatically initialize
+			your application by calling the `Ember.Application.initialize()` method. If
+			you need to delay initialization, you can call your app's `deferReadiness()`
+			method. When you are ready for your app to be initialized, call its
+			`advanceReadiness()` method.
+		*/
+		//App.deferReadiness();
 		var controlador = menuSelectColorController.create({
 			container : App.__container__
 		})
-
-		var stateManagerFalso = {
-			set : function(){
-				console.log("Ha llamado al metodo set")
-				console.log(arguments)
-			},
-			saveState : function(){
-				console.log("Ha llamado al metodo saveState")
-			}
-		}
 
 		var color = {
 			name : "red"
 		}
 
-		controlador.changeSelectedColor(color, stateManagerFalso)
+		
+
 		
 
 		it("El stateManager carga correctamente" ,function(){
-			//expect(cont).not.toBeUndefined();	
+			controlador.changeSelectedColor(color)
+
+			expect(stateManager.set).toHaveBeenCalled();
+			expect(stateManager.saveState).toHaveBeenCalled();
 		});
-
-		it("El stateManager comienza co")
-
 	});
 })

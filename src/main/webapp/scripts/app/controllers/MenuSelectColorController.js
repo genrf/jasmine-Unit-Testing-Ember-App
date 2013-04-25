@@ -5,13 +5,10 @@ define(['ember'],function(Ember){
 		init: function(){
 			this._super();
 		},
-		changeSelectedColor : function(newColor, stateManager){
+		changeSelectedColor : function(newColor){
 			/* Si no se le pasa ningun StateManager usa por defecto el de App */
-			if(stateManager == undefined){
-				stateManager = App.stateManager;
-			}
-			stateManager.set("colorSelected", newColor.name);
-			stateManager.saveState();
+			App.stateManager.set("colorSelected", newColor.name);
+			App.stateManager.saveState();
 		}
 	});
 	return MenuSelectColorController;
