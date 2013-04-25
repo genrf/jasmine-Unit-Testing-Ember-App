@@ -1,7 +1,6 @@
-
 define(['controllers/MenuSelectColorController'], function(menuSelectColorController) {
 
-	describe("Conjunto de test que prueban el manejo de estados del stateManager", function(){
+	describe("Conjunto de test que prueban el MenuSelectController", function(){
 
 		var stateManager = jasmine.createSpyObj('stateManager', ['set','saveState']);
 
@@ -9,7 +8,7 @@ define(['controllers/MenuSelectColorController'], function(menuSelectColorContro
 
 		window.App = Ember.Application.create({
 			ColorsController : dummyObject,
-			ColorController : dummyObject,
+			ColorController : dummyObject
 			menuSelectColorController : menuSelectColorController
 		})
 
@@ -23,6 +22,7 @@ define(['controllers/MenuSelectColorController'], function(menuSelectColorContro
 			`advanceReadiness()` method.
 		*/
 		App.deferReadiness();
+
 		var controlador = menuSelectColorController.create({
 			container : App.__container__
 		})
@@ -31,11 +31,7 @@ define(['controllers/MenuSelectColorController'], function(menuSelectColorContro
 			name : "red"
 		}
 
-		
-
-		
-
-		it("El stateManager carga correctamente" ,function(){
+		it("Cuando el controlador recibe el evento lo propaga correctamente al State Manager" ,function(){
 			controlador.changeSelectedColor(color)
 
 			expect(stateManager.set).toHaveBeenCalled();
