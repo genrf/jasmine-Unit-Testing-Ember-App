@@ -5,9 +5,11 @@ define(['controllers/MenuSelectColorController'], function(menuSelectColorContro
 
 		var stateManager = jasmine.createSpyObj('stateManager', ['set','saveState']);
 
+		var dummyObject = {};
+
 		window.App = Ember.Application.create({
-			ColorsController : jasmine.createSpy(),
-			ColorController : jasmine.createSpy(),
+			ColorsController : dummyObject,
+			ColorController : dummyObject,
 			menuSelectColorController : menuSelectColorController
 		})
 
@@ -20,7 +22,7 @@ define(['controllers/MenuSelectColorController'], function(menuSelectColorContro
 			method. When you are ready for your app to be initialized, call its
 			`advanceReadiness()` method.
 		*/
-		//App.deferReadiness();
+		App.deferReadiness();
 		var controlador = menuSelectColorController.create({
 			container : App.__container__
 		})
